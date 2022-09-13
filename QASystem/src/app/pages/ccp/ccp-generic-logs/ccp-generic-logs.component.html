@@ -1,0 +1,188 @@
+<div #gccp>
+    <div class="card-title d-flex align-items-center">
+        <div class="customers-list-item d-flex align-items-center p-2
+            cursor-pointer">
+            <div>
+                <img
+                    src={{foto}}
+                    class="rounded-circle"
+                    width="80"
+                    height="80"
+                    alt="user avatar"
+                >
+            </div>
+            <div class="ms-2">
+                <h5 class="mb-1 font-14 text-white">Audited by:</h5>
+                <p class="font-size-sm">{{nameQA}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <form
+        class="row g-3"
+        [formGroup]="mainForm"
+        (ngSubmit)="submitForm()"
+    >
+        <div class="col-6">
+            <mat-form-field class="form-control">
+                <input
+                    matInput
+                    formControlName="date"
+                    [matDatepicker]="picker"
+                    placeholder="Select date...."
+                >
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="form-control">
+                <input
+                    matInput
+                    formControlName="time"
+                    [ngxTimepicker]="timepicker"
+                    placeholder="Select time...."
+                >
+                <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <div class="col-10 containerBtn">
+                <mat-form-field class="form-control">
+                    <mat-label class="requeried form-label">Preventive actions:</mat-label>
+                    <mat-select formControlName="preventive_action">
+                        <mat-option
+                            *ngFor="let key of dataPreventive"
+                            [value]="key.id"
+                        >
+                            {{key.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="preventiveControl &&
+                    preventiveControl.invalid">
+                        <mat-error *ngIf="preventiveControl.errors &&
+                        preventiveControl.errors['required']">{{requiredField}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div
+                class="col-2 padding-btn"
+                style="display: inline-block;"
+            >
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    (click)="$event.stopPropagation();
+              goTo('preventive-actions')"
+                >
+                    <i class="fadeIn animated bx bx-plus"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="col-10 containerBtn">
+                <mat-form-field class="form-control">
+                    <mat-label class="requeried form-label">Corrective actions:</mat-label>
+                    <mat-select formControlName="corrective_action">
+                        <mat-option
+                            *ngFor="let key of dataAction"
+                            [value]="key.id"
+                        >
+                            {{key.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="correctiveControl &&
+                    correctiveControl.invalid">
+                        <mat-error *ngIf="correctiveControl.errors &&
+                        correctiveControl.errors['required']">{{requiredField}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div
+                class="col-2 padding-btn"
+                style="display: inline-block;"
+            >
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    (click)="$event.stopPropagation();
+          goTo('actions')"
+                >
+                    <i class="fadeIn animated bx bx-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div
+            class={{item.class}}
+            *ngFor="let item of fields"
+        >
+            <mat-form-field class="form-control">
+                <mat-label class="requeried form-label">{{item.label}}</mat-label>
+                <input
+                    matInput
+                    *ngIf="item.type=='input'"
+                    formControlName={{item.name}}
+                    [(ngModel)]="item.model"
+                    required
+                    maxlength="10"
+                >
+                <input
+                    matInput
+                    type="number"
+                    *ngIf="item.type=='number'"
+                    formControlName={{item.name}}
+                    required
+                    [(ngModel)]="item.model"
+                    maxlength="10"
+                >
+                <textarea
+                    *ngIf="item.type=='text'"
+                    matInput
+                    formControlName={{item.name}}
+                    required
+                    [(ngModel)]="item.model"
+                    maxlength="10"
+                    rows="3"
+                ></textarea>
+                <mat-error *ngIf="this.mainForm.get(item.name)! &&
+                    this.mainForm.get(item.name)!.invalid">
+                    <mat-error *ngIf="this.mainForm.get(item.name)!.errors &&
+                        this.mainForm.get(item.name)!.errors!['required']">{{requiredField}}</mat-error>
+                    <mat-error *ngIf="this.mainForm.get(item.name)!.errors &&
+                        this.mainForm.get(item.name)!.errors!['notNumber']">{{notNumberField}}</mat-error>
+                    <mat-error *ngIf="this.mainForm.controls[item.name]!.hasError('maxLength')">
+                        Sólo se admiten
+                        10 caracteres alfanúmericos.
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row row-cols-auto g-3">
+            <div class="col">
+                <button
+                    type="button"
+                    mat-raised-button
+                    color="primary"
+                    (click)="$event.stopPropagation();
+                    clearForm()"
+                >
+                    Cancel
+                </button>
+            </div>
+            <div class="col">
+                <button
+                    type="submit"
+                    mat-raised-button
+                    color="primary"
+                >
+                    Add
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

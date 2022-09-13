@@ -1,0 +1,41 @@
+::ng-deep th.mat-header-cell {
+  color: rgba(#1A73E8, 0.38) !important;
+}
+
+
+::ng-deep .mat-checkbox {
+  .mat-checkbox-ripple .mat-ripple-element {
+    background-color: rgba(#1A73E8, 0.38) !important;
+  }
+
+  .mat-checkbox-frame {
+    border-color: rgba(#1A73E8, 0.38) !important;
+  }
+}
+
+::ng-deep .mat-tooltip-trigger {
+  .mat-button-wrapper {
+    color: rgba(#1A73E8, 0.38) !important;
+  }
+}
+::ng-deep .mat-paginator-range-actions{
+  .mat-paginator-range-label{
+    color: rgba(#1A73E8, 0.38) !important;
+  }
+}
+
+::ng-deep th.mat-header-cell {
+  z-index: 10 !important
+}
+
+
+::ng-deep mat-dialog-container {
+  background: #222b45 !important;
+}
+
+::ng-deep mat-dialog-container i {
+  color: white !important;
+}
+::ng-deep mat-dialog-container i {
+  color: white !important;
+}

@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-12 mx-auto">
+        <div class="border-0 border-4 border-white">
+            <div class="card-body p-5">
+                <div class="card-title d-flex align-items-center">
+                    <div><i class="bx bxs-user me-1 font-22 text-white"></i>
+                    </div>
+                    <h5 class="mb-0 text-white">Create sample forms</h5>
+                </div>
+                <hr>
+                <form class="row g-3" [formGroup]="videoForm" (ngSubmit)="submitForm()">
+                    <div class="col-12">
+                        <mat-form-field class="form-control">
+                            <mat-label class="form-label">Name:</mat-label>
+                            <input formControlName="name" requeried matInput maxlength="50">
+                            <mat-error *ngIf="nameControl && nameControl.invalid">
+                                <mat-error *ngIf="nameControl.errors && nameControl.errors['required']">{{requiredField}}
+                                </mat-error>
+                                <mat-error *ngIf="this.videoForm.controls['name'].hasError('maxLength')">{{maxField}}
+                                </mat-error>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field class="form-control">
+                            <mat-label class="form-label">Description:</mat-label>
+                            <textarea matInput requeried formControlName="description" maxlength="150" rows="3"></textarea>
+                            <mat-error *ngIf="descControl && descControl.invalid">
+                                <mat-error *ngIf="descControl.errors && descControl.errors['required']">{{requiredField}}
+                                </mat-error>
+                                <mat-error *ngIf="this.videoForm.controls['description'].hasError('maxLength')">{{maxField}}
+                                </mat-error>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row row-cols-auto g-3">
+                        <div class="col">
+                            <button type="button" mat-raised-button color="primary" (click)="$event.stopPropagation();
+                                        returnToList()">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" mat-raised-button color="primary">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+::ng-deep .mat-form-field {
+  .mat-form-field-underline {
+    position: absolute;
+    width: 0% !important;
+    pointer-events: none;
+    transform: scale3d(1, 1.0001, 1);
+  }
+}
+
+:host ::ng-deep .mat-select-value {
+  color: white !important;
+}
+
+
+.margin-toogle {
+  margin-left: 2.5px;
+  margin-right: 5px;
+}
+
+.label-toogle {
+  vertical-align: top;
+}
+
+.containerToggle {
+  display: inline-block;
+  width: 130px;
+  vertical-align: top;
+}

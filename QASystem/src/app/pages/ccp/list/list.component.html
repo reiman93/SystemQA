@@ -1,0 +1,107 @@
+<div class="row" #ccp>
+    <div class="col-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">ccp logs</h6>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <ul
+                    class="nav nav-tabs nav-fill"
+                    role="tablist">
+                    <li
+                        class="nav-item"
+                        role="presentation">
+                        <a
+                            class="nav-link active"
+                            data-bs-toggle="tab"
+                            href="#ccp-log-1"
+                            role="tab"
+                            aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <i class='bx bx-home font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title text-uppercase">ccp S3
+                                    Lactic Acid</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li
+                        class="nav-item"
+                        role="presentation">
+                        <a
+                            class="nav-link"
+                            data-bs-toggle="tab"
+                            role="tab"
+                            href="#ccp-log-2"
+                            role="tab"
+                            aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <i class='bx bx-user-pin font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title text-uppercase">ccp
+                                    Peroxyacetic acid</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li
+                        class="nav-item"
+                        role="presentation">
+                        <a
+                            class="nav-link"
+                            data-bs-toggle="tab"
+                            href="#ccp-log-3"
+                            role="tab"
+                            aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <i class='bx bx-microphone font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title text-uppercase">ccp s1
+                                    haccp</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content py-3">
+                    <!-- ccp-LOG-1  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade show active"
+                        id="ccp-log-1"
+                        role="tabpanel">
+                        <app-ccp-generic-logs
+                            #gccp
+                            [fields]="fields1"
+                            period=1
+                            service="ccp-lactic"></app-ccp-generic-logs>
+                    </div>
+                    <!-- END TAB  ccp-LOG-1 -->
+                    <!-- ccp-LOG-2  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="ccp-log-2"
+                        role="tabpanel">
+                        <app-ccp-generic-logs
+                            #gccp1
+                            [fields]="fields2"
+                            period=2
+                            service="ccp-peroaxycetic"></app-ccp-generic-logs>
+                    </div>
+                    <!-- END TAB  ccp-LOG-2 -->
+                    <!-- ccp-LOG-3  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="ccp-log-3"
+                        role="tabpanel">
+                        <app-ccp-generic-logs
+                            #gccp2
+                            [fields]="fields3"
+                            period=3
+                            service="ccp-s1haccp"></app-ccp-generic-logs>
+                    </div>
+                    <!-- END TAB  ccp-LOG-3 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">Settings</h6>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <ul
+                    class="nav nav-tabs nav-fill"
+                    role="tablist">
+                    <button
+                        class="mySpacer"
+                        mat-raised-button
+                        [disabled]="prevTabs.length == 0 ? true:false"
+                        (click)="prevTab()">
+                        <i class="fadeIn animated bx bx-left-arrow-alt"></i>
+                    </button>
+                    <li
+                        class="nav-item"
+                        role="presentation"
+                        *ngFor="let nav of li"
+                        [routerLink]=nav.router
+                        >
+                        <a
+                            class="nav-link"
+                            data-bs-toggle="tab"
+                            [ngClass]="active[nav.index] ?'active':''"
+                            (click)="clickActive(nav.index)"
+                            role="tab"
+                            aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <i class='bx bx-home font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title text-uppercase">{{nav.label}}</div>
+                            </div>
+                        </a>
+                    </li>
+                    <button
+                        class="mySpacer"
+                        mat-raised-button
+                        [disabled]="nextTabs.length == 0 ? true:false"
+                        (click)="nexTab()">
+                        <i class="fadeIn animated bx bx-right-arrow-alt
+                            justify-content-end"></i>
+                    </button>
+                </ul>
+                <div class="tab-content py-3">
+                    <!-- nomenclators  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade show active"
+                        id="nomenclators"
+                        role="tabpanel">
+                        <router-outlet></router-outlet>
+                    </div>
+                    <!-- END TAB nomenclators -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

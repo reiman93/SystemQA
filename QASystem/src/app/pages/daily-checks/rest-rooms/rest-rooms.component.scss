@@ -1,0 +1,27 @@
+.margin-toogle {
+  margin-left: 2.5px;
+  margin-right: 5px;
+}
+
+.label-toogle {
+  vertical-align: top;
+}
+
+.containerToggle {
+  display: inline-block;
+  width: 130px;
+  vertical-align: top;
+}
+
+:host ::ng-deep .mat-select-value {
+  color: white !important;
+}
+
+.padding-btn {
+  padding: 15px;
+}
+
+.containerForm {
+  display: inline-block;
+  vertical-align: top;
+}

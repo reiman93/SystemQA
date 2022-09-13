@@ -1,0 +1,359 @@
+<div class="row" #myIdentifier>
+    <div class="col-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">Daily checks</h6>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <ul
+                    class="nav nav-tabs nav-fill"
+                    role="tablist">
+                    <button
+                        class="mySpacer"
+                        mat-raised-button
+                        [disabled]="prevTabs.length == 0 ? true:false"
+                        (click)="prevTab()">
+                        <i class="fadeIn animated bx bx-left-arrow-alt"></i>
+                    </button>
+                    <li
+                        class="nav-item"
+                        role="presentation"
+                        *ngFor="let nav of li">
+                        <a
+                            class="nav-link"
+                            data-bs-toggle="tab"
+                            [href]=nav.href
+                            role="tab"
+                            [ngClass]="active[nav.index] ?'active':''"
+                            (click)="clickActive(nav.index)"
+                            (click.ctrl)="onKeydown($event,nav.href)"
+                            aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <i class='bx bx-home font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title text-uppercase">{{nav.label}}</div>
+                            </div>
+                        </a>
+                    </li>
+                    <button
+                        class="mySpacer"
+                        mat-raised-button
+                        [disabled]="nextTabs.length == 0 ? true:false"
+                        (click)="nexTab()">
+                        <i class="fadeIn animated bx bx-right-arrow-alt"></i>
+                    </button>
+                </ul>
+                <div class="tab-content py-3">
+                    <!-- WR-KILL-FLOOR  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade show active"
+                        id="wr-kill-floor"
+                        role="tabpanel">
+                        <ul
+                            class="nav nav-tabs nav-fill"
+                            role="tablist">
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link active"
+                                    data-bs-toggle="tab"
+                                    href="#wr-kill-floor-p1"
+                                    role="tab"
+                                    aria-selected="true">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-home font-18 me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 1</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link"
+                                    data-bs-toggle="tab"
+                                    href="#wr-kill-floor-p2"
+                                    role="tab"
+                                    aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-user-pin font-18
+                                                me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 2</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link"
+                                    data-bs-toggle="tab"
+                                    href="#wr-kill-floor-p3"
+                                    role="tab"
+                                    aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-microphone font-18
+                                                me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 3</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content py-3">
+                            <div
+                                class="tab-pane fade show active"
+                                id="wr-kill-floor-p1"
+                                role="tabpanel">
+                                <app-wr-kill-floor [period]="period1"></app-wr-kill-floor>
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="wr-kill-floor-p2"
+                                role="tabpanel">
+                                <app-wr-kill-floor [period]="period2"></app-wr-kill-floor>
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="wr-kill-floor-p3"
+                                role="tabpanel">
+                                <app-wr-kill-floor [period]="period3"></app-wr-kill-floor>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END TAB WR-KILL-FLOOR -->
+                    <!-- WR-OUT-RAIL  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="wr-out-rail"
+                        role="tabpanel">
+                        <app-wr-slaughter-floor></app-wr-slaughter-floor>
+                    </div>
+                    <!-- END TAB  WR-OUT-RAIL -->
+                    <!-- slaughter-FLOOR  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="slaughter-floor"
+                        role="tabpanel">
+                        <ul
+                            class="nav nav-tabs nav-fill"
+                            role="tablist">
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link active"
+                                    data-bs-toggle="tab"
+                                    href="#slaughter-floor-p1"
+                                    role="tab"
+                                    aria-selected="true">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-home font-18 me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 1</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link"
+                                    data-bs-toggle="tab"
+                                    href="#slaughter-floor-p2"
+                                    role="tab"
+                                    aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-user-pin font-18
+                                                me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 2</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link"
+                                    data-bs-toggle="tab"
+                                    href="#slaughter-floor-p3"
+                                    role="tab"
+                                    aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-microphone font-18
+                                                me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 3</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content py-3">
+                            <div
+                                class="tab-pane fade show active"
+                                id="slaughter-floor-p1"
+                                role="tabpanel">
+                                <app-slaughter-floor-visual [period]="period1"></app-slaughter-floor-visual>
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="slaughter-floor-p2"
+                                role="tabpanel">
+                                <app-slaughter-floor-visual [period]="period2"></app-slaughter-floor-visual>
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="slaughter-floor-p3"
+                                role="tabpanel">
+                                <app-slaughter-floor-visual [period]="period3"></app-slaughter-floor-visual>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END TAB slaughter-FLOOR -->
+                    <!-- WR-SPINAL-CORD  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="wr-spinal-cord"
+                        role="tabpanel">
+                        <ul
+                            class="nav nav-tabs nav-fill"
+                            role="tablist">
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link active"
+                                    data-bs-toggle="tab"
+                                    href="#wr-spinal-cord-p1"
+                                    role="tab"
+                                    aria-selected="true">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-home font-18 me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 1</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link"
+                                    data-bs-toggle="tab"
+                                    href="#wr-spinal-cord-p2"
+                                    role="tab"
+                                    aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-user-pin font-18
+                                                me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 2</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item"
+                                role="presentation">
+                                <a
+                                    class="nav-link"
+                                    data-bs-toggle="tab"
+                                    href="#wr-spinal-cord-p3"
+                                    role="tab"
+                                    aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class='bx bx-microphone font-18
+                                                me-1'></i>
+                                        </div>
+                                        <div class="tab-title">Periodo 3</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content py-3">
+                            <div
+                                class="tab-pane fade show active"
+                                id="wr-spinal-cordr-p1"
+                                role="tabpanel">
+                                <app-wr-spinal-cord [period]="period1"></app-wr-spinal-cord>
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="wr-spinal-cord-p2"
+                                role="tabpanel">
+                                <app-wr-spinal-cord [period]="period2"></app-wr-spinal-cord>
+                            </div>
+                            <div
+                                class="tab-pane fade"
+                                id="wr-spinal-cord-p3"
+                                role="tabpanel">
+                                <app-wr-spinal-cord [period]="period3"></app-wr-spinal-cord>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END TAB WR-SPINAL-CORD -->
+                    <!-- WR-SLAUGTHER-FLOOR  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="wr-slaughter-floor"
+                        role="tabpanel">
+                        <app-wr-slaughter-floor></app-wr-slaughter-floor>
+                    </div>
+                    <!-- END TAB  WR-SLAUGTHER-FLOOR -->
+                    <!-- SPINAL-CORD-SHEATH  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="spinal-cord-sheath"
+                        role="tabpanel">
+                        <app-spinal-cord-sheath></app-spinal-cord-sheath>
+                    </div>
+                    <!-- END TAB  SPINAL-CORD-SHEATH -->
+                    <!-- SLAUGTHER-MOVEMENT-LOG  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="slaugther-movement-log"
+                        role="tabpanel">
+                        <app-slaugther-movement-log></app-slaugther-movement-log>
+                    </div>
+                    <!-- END TAB  SLAUGTHER-MOVEMENT-LOG -->
+                    <!-- CHECK FOR CLEANING TOWELS   BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="checks-cleanig-towels"
+                        role="tabpanel">
+                        <app-checks-cleanig-towels></app-checks-cleanig-towels>
+                    </div>
+                    <!-- END TAB  CHECK FOR CLEANING TOWELS -->
+                    <!-- KOSHER CHECK LIST   BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="kosher-check-lists"
+                        role="tabpanel">
+                        <app-kosher-check-list></app-kosher-check-list>
+                    </div>
+                    <!-- END TAB  KOSHER CHECK LIST -->
+                    <!-- REST ROOM  BEGINING TAB -->
+                    <div
+                        class="tab-pane fade"
+                        id="rest-room"
+                        role="tabpanel">
+                        <app-rest-rooms></app-rest-rooms>
+                    </div>
+                    <!-- END TAB  REEST ROOM -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
